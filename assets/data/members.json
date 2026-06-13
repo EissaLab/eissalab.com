@@ -1,0 +1,50 @@
+{
+  "pi": {
+    "name": "Tahra Eissa",
+    "badge": "Principal Investigator",
+    "title": "Assistant Professor",
+    "initials": "TE",
+    "photo": "",
+    "affiliations": [
+      "Department of Physiology & Biophysics",
+      "Department of Psychiatry",
+      "University of Colorado Anschutz"
+    ],
+    "links": [
+      { "label": "tahra.eissa@cuanschutz.edu", "href": "mailto:tahra.eissa@cuanschutz.edu" },
+      { "label": "Google Scholar \u2197", "href": "https://scholar.google.com/citations?user=_vu74AcAAAAJ&hl=en" },
+      { "label": "Twitter \u2197", "href": "https://twitter.com/EissaTahra" },
+      { "label": "LinkedIn \u2197", "href": "https://www.linkedin.com/in/tahraeissa/" },
+      { "label": "GitHub \u2197", "href": "https://github.com/teissa/" }
+    ]
+  },
+  "members": [
+    {
+      "name": "Arindrajit Paul",
+      "role": "Masters Student",
+      "initials": "AP",
+      "photo": "",
+      "gradient": "a",
+      "dept": "Department of Computer Science\nUniversity of Colorado Boulder",
+      "blurb": "Identifying the strategies humans use in multi-timescale inference tasks where latent or hidden features are in play."
+    },
+    {
+      "name": "Laavanya Joshi Malik",
+      "role": "Masters Student",
+      "initials": "LM",
+      "photo": "",
+      "gradient": "b",
+      "dept": "Department of Biostatistics\nUniversity of Colorado Anschutz",
+      "blurb": "Analyzing local field potential activity from human ECoG to identify how neural populations predict latent environmental features."
+    },
+    {
+      "name": "Zara Chandra",
+      "role": "Undergraduate Student",
+      "initials": "ZC",
+      "photo": "",
+      "gradient": "c",
+      "dept": "Department of Applied Math\nUniversity of Colorado Boulder",
+      "blurb": "Investigating how recurrent neural networks encode latent variables, and how Bayesian dynamics, heuristic shortcuts, and biases arise during training."
+    }
+  ]
+}
