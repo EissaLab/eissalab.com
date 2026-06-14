@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing/research website for the **Eissa Lab** (cognition / computation / neuroscience, CU Anschutz), built with **Jekyll** (via the `github-pages` gem) and deployed on **GitHub Pages** at `eissalab.com` (custom domain in `CNAME`). No JS framework, no npm, no tests — the only build is `jekyll build`. Styling is hand-written CSS (custom properties), not a CSS framework.
+Marketing/research website for the **Eissa Lab** (cognition / computation / neuroscience, CU Anschutz), built with **Jekyll** (via the `github-pages` gem) and deployed on **GitHub Pages** at the project path **https://bamr87.github.io/eissalab.com/**. No JS framework, no npm, no tests — the only build is `jekyll build`. Styling is hand-written CSS (custom properties), not a CSS framework.
+
+**Base path matters.** The site is served under `/eissalab.com/`, so `_config.yml` sets `baseurl: "/eissalab.com"`. Always build internal links/assets with `{{ '/path' | relative_url }}` (or `| relative_url` on data-driven hrefs) — never hardcode root-relative `/path`, which 404s at the subpath. Local dev stays at root because the Docker serve command overrides `--baseurl ""`. (There's no custom domain / `CNAME` currently; to add one back, set the Pages custom domain and revert `baseurl`/`url`.)
 
 `EDITING.md` is the non-developer content guide (which `_data` / `_members` files to edit). This file covers the architecture that spans multiple files.
 

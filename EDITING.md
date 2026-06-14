@@ -20,8 +20,7 @@ _layouts/             page templates (rarely touched)
 assets/
   styles.css          ALL styling / colors / fonts (one file)
   site.js             nav, theme toggle, scroll animations, hero visual, filters
-_config.yml           site settings
-CNAME                 custom domain (eissalab.com)
+_config.yml           site settings (incl. baseurl /eissalab.com)
 ```
 
 ---
@@ -113,7 +112,10 @@ Edits to content/data are picked up automatically (livereload). To stop, press C
 
 ## 6. Publishing
 
-Push to the GitHub repository's default branch — GitHub Pages builds the Jekyll site
-automatically (no `_site` to commit). In **Settings → Pages**, the source is *GitHub Actions*
-or *Deploy from a branch* (root). The `CNAME` file keeps the site on `eissalab.com`; tick
-**Enforce HTTPS** under Settings → Pages. If you ever drop the custom domain, delete `CNAME`.
+Push to the GitHub repository's default branch — the GitHub Actions workflow
+(`.github/workflows/jekyll.yml`) builds and deploys automatically (no `_site` to commit).
+The site is served at **https://bamr87.github.io/eissalab.com/**.
+
+To put it back on a custom domain (`eissalab.com`): point the domain's DNS at GitHub Pages,
+set the custom domain under **Settings → Pages**, and change `baseurl` back to `""` (and `url`
+to `https://eissalab.com`) in `_config.yml`.

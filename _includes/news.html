@@ -14,7 +14,7 @@
           <p>{{ item.body }}</p>
         </div>
         {% if item.tag %}
-        <a class="news-tag" href="{{ item.tag.href }}">{{ item.tag.label }}</a>
+        <a class="news-tag" href="{% if item.tag.href contains '://' %}{{ item.tag.href }}{% else %}{{ item.tag.href | relative_url }}{% endif %}">{{ item.tag.label }}</a>
         {% endif %}
       </li>
       {% endfor %}

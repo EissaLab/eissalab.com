@@ -32,11 +32,12 @@ jobs:
           bundler-cache: true        # bundle install + cache gems
 
       - name: Setup Pages
-        id: pages
         uses: actions/configure-pages@v5
 
       - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        # baseurl comes from _config.yml (/eissalab.com) so this matches GitHub's
+        # legacy pages-build-deployment exactly — whichever deploys, paths are correct.
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
 

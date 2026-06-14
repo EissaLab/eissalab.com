@@ -14,6 +14,7 @@ EXPOSE 4000 35729
 
 CMD ["bundle", "exec", "jekyll", "serve", \
      "--host", "0.0.0.0", \
+     "--baseurl", "", \
      "--watch", \
      "--force_polling", \
      "--livereload", \
