@@ -5,9 +5,9 @@ description: >-
   to different environments, combining crowdsourced behavior, computational
   modeling, and human brain recordings.
 # Served at the standard GitHub Pages project path:
-#   https://bamr87.github.io/eissalab.com/
+#   https://eissalab.github.io/eissalab.com/
 # (Local dev stays at root — the Docker serve command overrides baseurl to "".)
-url: "https://bamr87.github.io"
+url: "https://eissalab.github.io"
 baseurl: "/eissalab.com"
 
 # Theme / rendering
