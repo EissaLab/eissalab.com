@@ -1,0 +1,23 @@
+{%- comment -%} News / announcements list, driven by site.data.news. {%- endcomment -%}
+<section class="section-pad-sm news">
+  <div class="wrap">
+    <div class="news-head reveal">
+      <span class="kicker">News</span>
+      <h2 class="h2">Announcements</h2>
+    </div>
+    <ul class="news-list">
+      {% for item in site.data.news %}
+      <li class="news-item reveal {% cycle 'd0', 'd1', 'd2', 'd3', 'd4' %}">
+        <span class="news-date">{{ item.date }}</span>
+        <div class="news-body">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.body }}</p>
+        </div>
+        {% if item.tag %}
+        <a class="news-tag" href="{{ item.tag.href }}">{{ item.tag.label }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

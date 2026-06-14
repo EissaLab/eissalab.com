@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<section class="page-hero">
+  <div class="wrap">
+    <a class="kicker reveal" href="{{ '/members/' | relative_url }}" style="text-decoration:none;">← People</a>
+    <h1 class="display reveal d1" style="max-width: 16ch; margin-top: 16px;">{{ page.name }}</h1>
+    <p class="lead reveal d2" style="margin-top: 10px;">{{ page.role }}{% if page.dept %} · {{ page.dept | replace: "\n", " · " }}{% endif %}</p>
+  </div>
+</section>
+
+<section class="wrap member-detail-section">
+  <div class="member-detail-grid">
+    <!-- Photo / initials -->
+    <div class="m-photo member-detail-photo grad-{{ page.gradient | default: 'a' }}">
+      {% if page.photo and page.photo != "" %}
+        <img src="{{ page.photo | relative_url }}" alt="{{ page.name }}">
+      {% else %}
+        <span class="ph-initials">{{ page.initials }}</span>
+      {% endif %}
+    </div>
+
+    <!-- Info -->
+    <div class="member-detail-body">
+      {% if page.affiliations %}
+      <ul class="pi-affil" style="margin-bottom: 24px;">
+        {% for aff in page.affiliations %}
+        <li>{{ aff }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if page.links %}
+      <div class="pi-links" style="margin-bottom: 32px;">
+        {% for lnk in page.links %}
+        <a class="chip" href="{{ lnk.href }}"{% if lnk.href contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ lnk.label }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if content and content != "" %}
+      <div class="member-bio">
+        {{ content }}
+      </div>
+      {% elsif page.blurb %}
+      <p class="member-blurb">{{ page.blurb }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

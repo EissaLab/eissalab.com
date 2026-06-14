@@ -1,0 +1,19 @@
+{%- comment -%} Team member grid card. Expects `include.member` (a member document). {%- endcomment -%}
+{% assign member = include.member %}
+<article class="card member-card reveal{% cycle ' ', ' d1', ' d2' %}">
+  <a href="{{ member.url | relative_url }}" style="display:contents;">
+    <div class="m-photo grad-{{ member.gradient | default: 'a' }}">
+      {% if member.photo and member.photo != "" %}
+        <img src="{{ member.photo | relative_url }}" alt="{{ member.name }}">
+      {% else %}
+        <span class="ph-initials">{{ member.initials }}</span>
+      {% endif %}
+    </div>
+  </a>
+  <div class="m-body">
+    <h3><a href="{{ member.url | relative_url }}">{{ member.name }}</a></h3>
+    <p class="m-role">{{ member.role }}</p>
+    <p class="m-dept">{{ member.dept | replace: "\n", "<br>" }}</p>
+    <p class="m-blurb">{{ member.blurb }}</p>
+  </div>
+</article>

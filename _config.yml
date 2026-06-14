@@ -1,0 +1,43 @@
+title: Eissa Lab
+tagline: Cognition · Computation · Neuroscience
+description: >-
+  The Eissa Lab studies how we learn and adapt our decision-making strategies
+  to different environments, combining crowdsourced behavior, computational
+  modeling, and human brain recordings.
+url: "https://eissalab.com"
+baseurl: ""
+
+# Theme / rendering
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Collections
+collections:
+  members:
+    output: true
+    permalink: /people/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: members
+    values:
+      layout: member
+
+# Build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Dockerfile
+  - docker-compose.yml
+  - vendor/
+  - .jekyll-cache/
+  - CLAUDE.md
+  - EDITING.md
+  - node_modules/

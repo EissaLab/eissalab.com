@@ -1,220 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eissa Lab — Cognition, Computation, Neuroscience</title>
-<meta name="description" content="The Eissa Lab studies how we learn and adapt our decision-making strategies to different environments, combining crowdsourced behavior, computational modeling, and human brain recordings.">
-<script>(function(){try{var t=localStorage.getItem('eissa-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
+---
+layout: default
+title: "Eissa Lab — Cognition, Computation, Neuroscience"
+description: "The Eissa Lab studies how we learn and adapt our decision-making strategies to different environments, combining crowdsourced behavior, computational modeling, and human brain recordings."
+nav_active: home
+---
 
-<!-- ===== Header ===== -->
-<header class="site-header">
-  <div class="wrap-wide nav">
-    <a class="brand" href="index.html">
-      <span class="mark"></span>
-      <span>Eissa Lab<small>Cognition · Computation · Neuroscience</small></span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="members.html">People</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li class="nav-theme"><button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button></li>
-      <li class="nav-cta"><a class="btn btn-primary" href="contact.html#join">Join the lab <span class="arr">→</span></a></li>
-    </ul>
-  </div>
-</header>
 
 <!-- ===== Hero ===== -->
 <section class="hero">
   <canvas id="net" aria-hidden="true"></canvas>
-  <div class="wrap hero-inner" style="font-size: 20px;">
+  <div class="wrap hero-inner">
     <div class="hero-copy">
       <span class="kicker reveal">University of Colorado Anschutz</span>
-      <h1 class="display reveal d1"><span style="color: rgb(82, 215, 255); font-size: 78px;">Eissa Lab</span><div style="font-size: 60px;">How the brain<br>makes decisions in a<br><span class="grad">changing world.</span></div></h1>
-      <p class="lead reveal d2" style="font-size: 24px;">We build decision-making games with hidden features, then use mathematical modeling and human brain recordings to uncover the strategies people use — and how the brain computes them.</p>
+      <h1 class="display reveal d1">
+        <span class="hero-labname">Eissa Lab</span>
+        <span class="hero-headline">How the brain<br>makes decisions in a<br><span class="grad">changing world.</span></span>
+      </h1>
+      <p class="lead reveal d2">We build decision-making games with hidden features, then use mathematical modeling and human brain recordings to uncover the strategies people use — and how the brain computes them.</p>
       <div class="hero-actions reveal d3">
-        <a class="btn btn-primary" href="research.html">Explore our research <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="members.html">Meet the team</a>
+        <a class="btn btn-primary" href="{{ '/research/' | relative_url }}">Explore our research <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="{{ '/members/' | relative_url }}">Meet the team</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Research preview ===== -->
-<section class="section-pad research-preview">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Research</span>
-      <h2 class="h2">Three questions guide the lab.</h2>
-      <p class="muted">Our work focuses on how decision strategies change in different environments, how the brain implements those strategies, and how neurological and psychiatric disorders impact these processes.</p>
-    </div>
+{% include research-preview.html %}
 
-    <div class="research-grid">
-      <a class="card research-card reveal" href="research.html#adaptive">
-        <span class="idx">01</span>
-        <h3 class="h3">Adaptive Decision-Making</h3>
-        <p>How is information relevant to our environment learned, processed, and applied to everyday choices?</p>
-        <span class="link-arrow">Read more <span class="arr">→</span></span>
-      </a>
-      <a class="card research-card reveal d1" href="research.html#memory">
-        <span class="idx">02</span>
-        <h3 class="h3">Working Memory</h3>
-        <p>How does working memory support adaptive decisions by selectively retaining what's most relevant?</p>
-        <span class="link-arrow">Read more <span class="arr">→</span></span>
-      </a>
-      <a class="card research-card reveal d2" href="research.html#psychiatry">
-        <span class="idx">03</span>
-        <h3 class="h3">Cognition in Psychiatric Disorders</h3>
-        <p>Can decision-making metrics measure clinical differences and predict treatment outcomes?</p>
-        <span class="link-arrow">Read more <span class="arr">→</span></span>
-      </a>
-    </div>
+{% include news.html %}
 
-    <div class="method-row reveal">
-      <span class="dotrule">OUR TOOLKIT</span>
-      <div class="methods">
-        <span class="pill">Crowdsourced behavior</span>
-        <span class="pill">Computational modeling</span>
-        <span class="pill">Human brain recordings</span>
-        <span class="pill">Bayesian inference</span>
-        <span class="pill">Recurrent neural networks</span>
-        <span class="pill">Human ECoG</span>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== News / announcements ===== -->
-<section class="section-pad-sm news">
-  <div class="wrap">
-    <div class="news-head reveal">
-      <span class="kicker">News</span>
-      <h2 class="h2">Announcements</h2>
-    </div>
-    <ul class="news-list" id="news-mount"></ul>
-  </div>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer class="site-footer">
-  <div class="wrap-wide">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="brand" href="index.html"><span class="mark"></span><span>Eissa Lab<small>Cognition · Computation · Neuroscience</small></span></a>
-        <p>Studying how the brain learns and adapts its decision-making strategies to a constantly changing world.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="members.html">People</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="https://twitter.com/EissaTahra" target="_blank" rel="noopener">Twitter / X</a></li>
-          <li><a href="https://www.linkedin.com/in/tahraeissa/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://github.com/teissa/" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:tahra.eissa@cuanschutz.edu">Email</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Eissa Lab · University of Colorado Anschutz</span>
-      <div class="social-row">
-        <a href="https://twitter.com/EissaTahra" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
-        <a href="https://www.linkedin.com/in/tahraeissa/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-        <a href="https://github.com/teissa/" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<style>
-/* ---- Home-specific ---- */
-.hero { padding: clamp(64px, 12vw, 132px) 0 0; overflow: hidden; }
-.hero #net {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0; pointer-events: none;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%, #000 100%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 38%, #000 100%);
-  opacity: .9;
-}
-.hero-inner { position: relative; z-index: 1; }
-.hero-copy { max-width: 660px; }
-.hero .display { margin: 22px 0 0; }
-.grad { background: linear-gradient(100deg, var(--primary), var(--indigo) 55%, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero .lead { margin-top: 26px; max-width: 52ch; }
-.hero-actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
-
-.hero-stats {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-  margin-top: clamp(56px, 8vw, 96px);
-  padding: 34px 0 0; border-top: 1px solid var(--line);
-}
-.stat .num { display:block; font-family: var(--display); font-size: clamp(2rem,3.4vw,2.9rem); font-weight:600; color: var(--ink); letter-spacing:-.03em; line-height:1; }
-.stat .lbl { display:block; margin-top:10px; color: var(--muted); font-size:.92rem; }
-
-.mission { background: var(--bg); }
-.big-statement { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 3vw, 2.3rem); line-height: 1.32; letter-spacing:-.02em; color: var(--ink); max-width: 22ch; }
-.big-statement em { font-style: normal; color: var(--primary); position: relative; }
-
-.research-preview { background: var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.research-card { padding: 34px 30px 30px; display:flex; flex-direction:column; align-items:flex-start; gap: 14px; }
-.research-card h3 { margin-top: 4px; }
-.research-card p { color: var(--ink-2); flex: 1; }
-.research-card .link-arrow { margin-top: 6px; }
-
-.method-row { margin-top: 56px; display:flex; flex-direction:column; gap:22px; }
-.methods { display:flex; flex-wrap:wrap; gap:10px; }
-
-.news-head { display:flex; align-items:baseline; gap: 20px; margin-bottom: 36px; flex-direction:column; }
-.news-head .h2 { margin-top: 14px; }
-.news-list { list-style:none; margin:0; padding:0; }
-.news-item {
-  display:grid; grid-template-columns: 120px 1fr auto; gap: 28px; align-items:start;
-  padding: 30px 0; border-top: 1px solid var(--line);
-}
-.news-item:last-child { border-bottom: 1px solid var(--line); }
-.news-date { font-family: var(--mono); font-size:.82rem; letter-spacing:.1em; color: var(--accent); padding-top: 6px; }
-.news-body h3 { margin-bottom: 8px; }
-.news-body p { color: var(--ink-2); margin: 0; max-width: 60ch; }
-.news-tag {
-  font-family: var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
-  padding:.45em .8em; border:1px solid var(--line-2); border-radius:999px; color: var(--ink-2);
-  white-space:nowrap; transition:.2s;
-}
-.news-tag:hover { border-color: var(--primary); color: var(--primary); }
-
-.join-cta { background: var(--bg-deep); margin-top: 0; }
-.join-inner { padding: clamp(56px,8vw,90px) 0; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
-.btn-light { background:#fff; color: var(--ink); }
-.btn-light:hover { background: var(--accent); color:#fff; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-
-@media (max-width: 860px){
-  .research-grid { grid-template-columns: 1fr; }
-  .hero-stats { grid-template-columns: 1fr; gap: 18px; }
-  .hero #net { opacity:.4; -webkit-mask-image:none; mask-image:none; }
-  .news-item { grid-template-columns: 1fr; gap: 10px; }
-  .news-date { padding-top:0; }
-  .news-tag { justify-self:start; }
-}
-</style>
-<script src="assets/site.js"></script>
-<script src="assets/render.js"></script>
-</body>
-</html>

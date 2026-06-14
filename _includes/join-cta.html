@@ -1,0 +1,18 @@
+{%- comment -%}
+  Dark "collaborate / join" call-to-action band. Optional overrides:
+    include.kicker  (default: Collaborate)
+    include.title   (default: Interested in this work?)
+    include.body    (default copy)
+    include.label   (default: Reach out)
+    include.href    (default: /contact/#join)
+{%- endcomment -%}
+<section class="join-cta">
+  <div class="wrap join-inner reveal">
+    <div>
+      <span class="kicker no-rule" style="color:var(--accent)">{{ include.kicker | default: "Collaborate" }}</span>
+      <h2 class="h2" style="color:#fff; margin-top:14px;">{{ include.title | default: "Interested in this work?" }}</h2>
+      <p style="color:#A9B8D2; max-width:46ch; margin-top:16px;">{{ include.body | default: "We're always glad to talk with prospective students, postdocs, and collaborators." }}</p>
+    </div>
+    <a class="btn btn-light" href="{{ include.href | default: '/contact/#join' | relative_url }}">{{ include.label | default: "Reach out" }} <span class="arr">→</span></a>
+  </div>
+</section>

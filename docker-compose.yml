@@ -1,0 +1,16 @@
+services:
+  jekyll:
+    build: .
+    ports:
+      - "4000:4000"   # Jekyll site
+      - "35729:35729" # LiveReload
+    volumes:
+      # Mount source files so edits are reflected without rebuild
+      - .:/site
+      # Cache gems across container restarts
+      - gem_cache:/usr/local/bundle
+    environment:
+      JEKYLL_ENV: development
+
+volumes:
+  gem_cache:

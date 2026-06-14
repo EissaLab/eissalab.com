@@ -4,55 +4,53 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Static marketing/research website for the **Eissa Lab** (cognition / computation / neuroscience, CU Anschutz). Plain HTML + CSS + vanilla JS with **no build step, no framework, no package manager, and no tests**. It is served as-is by GitHub Pages at `eissalab.com` (custom domain set via `CNAME`; `.nojekyll` disables Jekyll processing).
+Marketing/research website for the **Eissa Lab** (cognition / computation / neuroscience, CU Anschutz), built with **Jekyll** (via the `github-pages` gem) and deployed on **GitHub Pages** at `eissalab.com` (custom domain in `CNAME`). No JS framework, no npm, no tests — the only build is `jekyll build`. Styling is hand-written CSS (custom properties), not a CSS framework.
 
-`EDITING.md` is the content-editor's guide (written for non-developers) — read it for the exact JSON field meanings and the Formspree/GitHub Pages setup steps. This file covers the parts that require reading across multiple files.
+`EDITING.md` is the non-developer content guide (which `_data` / `_members` files to edit). This file covers the architecture that spans multiple files.
 
 ## Running locally
 
-There is nothing to build. But you **cannot** just open the HTML files via `file://` — the People, Publications, and News sections fetch JSON at runtime and browsers block `fetch()` over `file://`, leaving those sections blank (the code shows a "couldn't load" message). Always run a server:
+Local Ruby is too old for the `github-pages` gem, so use the bundled **Docker** dev server (defined in `Dockerfile` + `docker-compose.yml`):
 
 ```sh
-python3 -m http.server   # then open http://localhost:8000
+docker compose up           # serves at http://localhost:4000 with --watch + livereload
 ```
 
-Layout, styling, nav, theme toggle, and the hero animation work fine over `file://`; only the data-driven sections need the server.
+One-shot build / sanity check:
 
-## Architecture: data-driven content rendering
+```sh
+docker compose run --rm jekyll bundle exec jekyll build --trace
+```
 
-The central pattern is that **frequently-changing content is not in the HTML**. Pages ship with empty mount-point elements; `assets/render.js` fetches JSON from `assets/data/` and injects the HTML client-side. Editing content means editing JSON only — never the HTML.
+(`.claude/launch.json` points the preview tooling at the same `docker compose up` on port 4000.) Do **not** serve the raw repo with a plain static server — the `.html` files are Liquid templates and must be built first.
 
-The contract between the three layers (break any link and the section silently fails):
+## Architecture
 
-| Data file (`assets/data/`) | Rendered by `render.js` into element ID | Lives on page |
-| --- | --- | --- |
-| `news.json` (array) | `#news-mount` | `index.html` |
-| `members.json` (`{pi, members}`) | `#pi-mount`, `#team-grid` | `members.html` |
-| `publications.json` (`{entries}`) | `#pubs-mount` | `publications.html` |
+Five top-level pages (`index/research/members/contact/publications.html`) carry only front matter + page structure. Everything shared is in layouts, includes, data, and one stylesheet.
 
-`render.js` runs all three blocks unconditionally but each is guarded by an `if (mount)` check, so a single shared script works across pages — the mount IDs present on a given page decide what renders. `research.html` and `contact.html` have no data mounts (fully static).
+**Layouts** (`_layouts/`):
+- `default.html` — the shell: `<head>` + header + `{{ content }}` + footer + `site.js`. Every page gets it via the `_config.yml` default.
+- `page.html` — `default` + a hero rendered from the page's `hero:` front-matter object (see `_includes/page-hero.html`). Used by research/members/contact/publications.
+- `member.html` — detail page for one `_members/*` document (auto-applied to the `members` collection).
 
-Rendering details worth knowing before editing JSON or `render.js`:
-- **Publications** are grouped and sorted by `year` descending in code, so order in the file is irrelevant. `type` (`journal`/`preprint`/`conf`) drives both the colored tag and the filter buttons (`initFilters()` toggles `.pub` visibility by `data-type`).
-- **`authors`** field supports inline markup: `**bold**` → `<strong>`, `*italic*` → `<em>` via `rich()`. The `dept` field supports `\n` → `<br>` via `nl()`. All other fields are HTML-escaped.
-- **Members/PI** show colored initials placeholders until `photo` is set to a real path (e.g. `assets/photos/name.jpg` — that folder doesn't exist yet; create it when adding photos).
-- The team grid inserts member cards *before* the static `#join-card` element, so that card must stay last in the HTML.
+**Includes** (`_includes/`): `head.html`, `header.html`, `footer.html` (shared chrome); `page-hero.html` (front-matter-driven hero); `research-preview.html`, `news.html`, `join-cta.html` (home/CTA sections); `pi-card.html`, `member-card.html` (people, each takes an `include.*` parameter).
 
-## Architecture: shared behavior & theming
+**Content lives in data, not HTML:**
+- `_data/publications.json` → rendered **server-side** by Liquid in `publications.html` (`group_by: "year"`, sorted descending). `type` (`journal`/`preprint`/`conf`) drives the colored tag and the JS filter buttons.
+- `_data/news.json` → home page, via `_includes/news.html`.
+- `_members/*.md` → a Jekyll **collection** (`output: true`, permalink `/people/:name/`). The People page (`members.html`, at `/members/`) lists them; the **PI is distinguished by `badge: Principal Investigator`** (filtered out of the team grid and shown via `pi-card.html`). Each file is front matter only (name, role, initials, gradient, dept, blurb, optional photo/affiliations/links); body markdown, if present, becomes the detail-page bio.
 
-`assets/site.js` is loaded on every page and wires up cross-page behavior:
-- **Mobile nav toggle**, **header shadow on scroll**.
-- **Theme (light/dark)**: state lives in `localStorage['eissa-theme']` and as `data-theme="dark"` on `<html>`. To avoid a flash, an **inline `<script>` in each page's `<head>`** applies the saved/preferred theme *before* CSS loads — `site.js` only handles the toggle button afterward. All colors are CSS custom properties in `assets/styles.css` with a `[data-theme="dark"]` override block; the hero canvas re-reads them on a `eissa:themechange` event.
-- **Reveal-on-scroll animations**: `site.js` exposes a global `window.eissaObserveReveals(scope)`. `render.js` must call it (via its local `observe()`) after injecting content so dynamically-added `.reveal` elements animate too. New animated content needs the `reveal` class plus optional `d1`–`d4` stagger classes.
+**One stylesheet, one script:**
+- `assets/styles.css` is the **single source of truth for all styling** — including the per-page section styles, which were deliberately consolidated here (see the `PAGE SECTIONS` banner comment around line 346). Do **not** re-inline page CSS into `<style>` blocks; add rules here.
+- `assets/site.js` (loaded once by `default.html`) owns all client behavior, each guarded so it no-ops where the elements are absent: mobile nav, theme toggle, header shadow, reveal-on-scroll (`window.eissaObserveReveals`), the hero `#net` canvas animation (`initNetwork`), and publication filters (`initFilters`).
 
-The hero "decision network" canvas animation (`#net` on the home page) is `initNetwork()` in `site.js` — a self-contained forward-pass / decision visualization. It respects `prefers-reduced-motion` (renders a single static resolved frame).
+**Theming:** light/dark state is in `localStorage['eissa-theme']` + `data-theme` on `<html>`. An inline script in `_includes/head.html` applies it *before* CSS loads (anti-flash); `site.js` only handles the toggle. Colors are CSS custom properties with a `[data-theme="dark"]` override block; the canvas re-reads them on the `eissa:themechange` event.
 
-## Editing conventions
+## Conventions & gotchas
 
-- **JSON is hand-edited and unvalidated at build time** — a missing comma or trailing comma silently breaks the whole section at runtime. After editing a data file, paste it into a JSON validator or load the local server and check the section renders.
-- Each HTML page is self-contained: header, footer, and page-specific `<style>` blocks are duplicated inline per page rather than shared. A nav/footer change must be applied to all five pages.
-- The contact form (`contact.html`) posts to Formspree. The placeholder action `https://formspree.io/f/your-form-id` keeps it in "demo" mode; the page JS detects the literal `your-form-id` string to decide demo vs. live, so replacing it is what activates real submissions.
-
-## Not a git repo (yet)
-
-This working copy is not initialized as a git repository. Publishing (per `EDITING.md`) is: push to GitHub with `index.html` at the repo root → Settings → Pages → deploy from `main` / root.
+- **Pretty permalinks** (`_config.yml`): pages are at `/research/`, `/publications/`, `/members/`, `/contact/`, members at `/people/<name>/`. Internal links use `{{ '/path/' | relative_url }}`; the `_data/news.json` tag hrefs are root-relative (e.g. `/contact/#join`) — never the old `.html` paths.
+- **Publication author emphasis is inline HTML** (`<strong>…</strong>`, `<em>…</em>`) in `publications.json`, because the template prints `{{ pub.authors }}` verbatim. (The old `**markdown**` convention from the pre-Jekyll `render.js` no longer applies.) The `dept` field uses literal `\n`, converted with a Liquid `replace`.
+- **JSON data is unvalidated at build time** — a trailing/missing comma can fail the build or silently drop a section. Run the one-shot build above after editing data.
+- `_includes/head.html` loads the **Tailwind CDN**, but no markup uses Tailwind utility classes yet — it is currently dead weight (and Tailwind warns against the CDN in production). Remove it or commit to using it.
+- The Contact page (`contact.html`) is now just lab contact info — there is no message form. Outreach is by email (`mailto:`) and the Join section's CTA.
+- `_site/` is build output (git-ignored); never edit it by hand.

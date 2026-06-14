@@ -1,0 +1,38 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} — Eissa Lab{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<script>(function(){try{var t=localStorage.getItem('eissa-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: ['selector', '[data-theme="dark"]'],
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          sans:    ['"IBM Plex Sans"', 'sans-serif'],
+          mono:    ['"IBM Plex Mono"', 'monospace'],
+        },
+        colors: {
+          primary:  'var(--primary)',
+          indigo:   'var(--indigo)',
+          accent:   'var(--accent)',
+          ink:      'var(--ink)',
+          'ink-2':  'var(--ink-2)',
+          muted:    'var(--muted)',
+          surface:  'var(--surface)',
+          'bg-deep':'var(--bg-deep)',
+          line:     'var(--line)',
+        },
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+{% if page.extra_css %}<style>{{ page.extra_css }}</style>{% endif %}
+</head>

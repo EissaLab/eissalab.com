@@ -1,0 +1,29 @@
+{%- comment -%}
+  Page hero — driven by front matter `hero` object:
+    hero:
+      kicker: People
+      title: The people behind the work.
+      title_width: 14ch      # optional max-width for the heading
+      lead: A growing group…  # optional
+      lead_width: 54ch        # optional max-width for the lead
+      actions:                # optional list of buttons
+        - label: "Google Scholar ↗"
+          href: "https://…"
+          style: ghost        # btn-<style>; defaults to ghost
+{%- endcomment -%}
+{% if page.hero %}
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker reveal">{{ page.hero.kicker }}</span>
+    <h1 class="display reveal d1"{% if page.hero.title_width %} style="max-width: {{ page.hero.title_width }};"{% endif %}>{{ page.hero.title }}</h1>
+    {% if page.hero.lead %}<p class="lead reveal d2" style="margin-top: 26px;{% if page.hero.lead_width %} max-width: {{ page.hero.lead_width }};{% endif %}">{{ page.hero.lead }}</p>{% endif %}
+    {% if page.hero.actions %}
+    <div class="reveal d3" style="margin-top: 26px; display:flex; gap:12px; flex-wrap:wrap;">
+      {% for a in page.hero.actions %}
+      <a class="btn btn-{{ a.style | default: 'ghost' }}" href="{{ a.href }}"{% if a.href contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ a.label }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

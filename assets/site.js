@@ -256,6 +256,31 @@ function initNetwork(canvas) {
   if (reduce) requestAnimationFrame(frame); // draw one static frame
 }
 
+/* ---- Publication filters (moved from render.js) ---- */
+function initFilters() {
+  var filters = document.querySelectorAll('.filter');
+  var empty = document.querySelector('.pub-empty');
+  if (!filters.length) return;
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filters.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.dataset.filter, visible = 0;
+      document.querySelectorAll('.pub').forEach(function (p) {
+        var show = (f === 'all') || (p.dataset.type === f);
+        p.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      document.querySelectorAll('.pub-year').forEach(function (yr) {
+        var any = [].slice.call(yr.querySelectorAll('.pub')).some(function (p) { return p.style.display !== 'none'; });
+        yr.style.display = any ? '' : 'none';
+      });
+      if (empty) empty.hidden = visible !== 0;
+    });
+  });
+}
+
 window.addEventListener('DOMContentLoaded', function () {
   initNetwork(document.getElementById('net'));
+  if (document.getElementById('pubs-mount')) initFilters();
 });

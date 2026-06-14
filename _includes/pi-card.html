@@ -1,0 +1,29 @@
+{%- comment -%} PI feature card. Expects `include.pi` (a member document). {%- endcomment -%}
+{% assign pi = include.pi %}
+<section class="wrap pi-wrap" id="pi-mount">
+  <div class="pi-card reveal">
+    <a href="{{ pi.url | relative_url }}" class="pi-photo" style="text-decoration:none;">
+      {% if pi.photo and pi.photo != "" %}
+        <img src="{{ pi.photo | relative_url }}" alt="{{ pi.name }}">
+      {% else %}
+        <span class="ph-initials">{{ pi.initials }}</span>
+        <span class="ph-tag">Photo</span>
+      {% endif %}
+    </a>
+    <div class="pi-info">
+      <span class="pill">{{ pi.badge }}</span>
+      <h2 class="h2"><a href="{{ pi.url | relative_url }}" style="color:inherit;text-decoration:none;">{{ pi.name }}</a></h2>
+      <p class="pi-role">{{ pi.title }}</p>
+      <ul class="pi-affil">
+        {% for aff in pi.affiliations %}
+        <li>{{ aff }}</li>
+        {% endfor %}
+      </ul>
+      <div class="pi-links">
+        {% for lnk in pi.links %}
+        <a class="chip" href="{{ lnk.href }}"{% if lnk.href contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ lnk.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

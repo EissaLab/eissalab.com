@@ -1,47 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>People — Eissa Lab</title>
-<meta name="description" content="Meet the members of the Eissa Lab at the University of Colorado Anschutz.">
-<script>(function(){try{var t=localStorage.getItem('eissa-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
+---
+layout: page
+title: People
+description: Meet the members of the Eissa Lab at the University of Colorado Anschutz.
+nav_active: members
+hero:
+  kicker: People
+  title: The people behind the work.
+  title_width: 14ch
+  lead: A growing, interdisciplinary group spanning physiology, psychiatry, computer science, biostatistics, and applied mathematics.
+  lead_width: 54ch
+---
 
-<header class="site-header">
-  <div class="wrap-wide nav">
-    <a class="brand" href="index.html">
-      <span class="mark"></span>
-      <span>Eissa Lab<small>Cognition · Computation · Neuroscience</small></span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="members.html" class="active">People</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li class="nav-theme"><button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button></li>
-      <li class="nav-cta"><a class="btn btn-primary" href="contact.html#join">Join the lab <span class="arr">→</span></a></li>
-    </ul>
-  </div>
-</header>
-
-<section class="page-hero">
-  <div class="wrap">
-    <span class="kicker reveal">People</span>
-    <h1 class="display reveal d1" style="max-width: 14ch;">The people behind the work.</h1>
-    <p class="lead reveal d2" style="max-width: 54ch; margin-top: 26px;">A growing, interdisciplinary group spanning physiology, psychiatry, computer science, biostatistics, and applied mathematics.</p>
-  </div>
-</section>
-
-<!-- PI feature (rendered from assets/data/members.json) -->
-<section class="wrap pi-wrap" id="pi-mount"></section>
+<!-- PI feature -->
+{% assign pi = site.members | where: "badge", "Principal Investigator" | first %}
+{% if pi %}{% include pi-card.html pi=pi %}{% endif %}
 
 <!-- Team -->
 <section class="section-pad team-section">
@@ -50,105 +22,18 @@
       <span class="kicker">The team</span>
       <h2 class="h2">Current lab members</h2>
     </div>
-
-    <!-- member cards are rendered from assets/data/members.json -->
     <div class="team-grid" id="team-grid">
+      {% assign team = site.members | where_exp: "m", "m.badge != 'Principal Investigator'" %}
+      {% for member in team %}
+      {% include member-card.html member=member %}
+      {% endfor %}
+      <!-- Join card stays last -->
+      <a class="card join-card reveal" href="{{ '/contact/' | relative_url }}#join">
+        <span class="join-plus">+</span>
+        <h3 class="h3">Join the lab</h3>
+        <p>We're looking for curious, motivated students and postdocs.</p>
+        <span class="link-arrow">Open positions <span class="arr">→</span></span>
+      </a>
     </div>
   </div>
 </section>
-
-<footer class="site-footer">
-  <div class="wrap-wide">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="brand" href="index.html"><span class="mark"></span><span>Eissa Lab<small>Cognition · Computation · Neuroscience</small></span></a>
-        <p>Studying how the brain learns and adapts its decision-making strategies to a constantly changing world.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="members.html">People</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="https://twitter.com/EissaTahra" target="_blank" rel="noopener">Twitter / X</a></li>
-          <li><a href="https://www.linkedin.com/in/tahraeissa/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://github.com/teissa/" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:tahra.eissa@cuanschutz.edu">Email</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Eissa Lab · University of Colorado Anschutz</span>
-      <div class="social-row">
-        <a href="https://twitter.com/EissaTahra" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
-        <a href="https://www.linkedin.com/in/tahraeissa/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-        <a href="https://github.com/teissa/" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<style>
-.pi-wrap { margin-top: 8px; }
-.pi-card {
-  display:grid; grid-template-columns: 300px 1fr; gap: clamp(28px,4vw,52px);
-  background: var(--surface); border:1px solid var(--line); border-radius: var(--r-lg);
-  padding: clamp(24px,3vw,38px); align-items:center; box-shadow: var(--shadow-sm);
-}
-.pi-photo {
-  aspect-ratio: 4/5; border-radius: var(--r-md); position:relative; overflow:hidden;
-  background: linear-gradient(155deg,#1b347f,#4a40c9 60%, #117f9c);
-  display:grid; place-items:center;
-}
-.ph-initials { font-family: var(--display); font-weight:600; color: rgba(255,255,255,.92); font-size: clamp(2.4rem,5vw,3.4rem); letter-spacing:.02em; }
-.ph-tag { position:absolute; bottom:10px; right:12px; font-family: var(--mono); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color: rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.3); padding:.25em .55em; border-radius:6px; }
-.pi-info .pill { margin-bottom: 14px; }
-.pi-info .h2 { margin-bottom: 4px; }
-.pi-role { font-size:1.15rem; color: var(--primary); font-weight:500; margin:0 0 18px; }
-.pi-affil { list-style:none; margin:0 0 22px; padding:0; display:flex; flex-direction:column; gap:5px; color: var(--ink-2); }
-.pi-affil li { padding-left: 18px; position:relative; }
-.pi-affil li::before { content:""; position:absolute; left:0; top:.7em; width:7px; height:7px; border-radius:2px; background: var(--accent); }
-.pi-links { display:flex; flex-wrap:wrap; gap:9px; }
-.chip { font-family: var(--mono); font-size:.8rem; padding:.5em .85em; border:1px solid var(--line-2); border-radius:999px; color: var(--ink-2); transition:.2s var(--ease); }
-.chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-.team-section { background: var(--surface); border-top:1px solid var(--line); margin-top: clamp(56px,8vw,90px); }
-.team-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-.member-card { overflow:hidden; display:flex; flex-direction:column; }
-.m-photo { aspect-ratio: 5/4; position:relative; display:grid; place-items:center; }
-.grad-a { background: linear-gradient(150deg,#1b347f,#2c52c4); }
-.grad-b { background: linear-gradient(150deg,#3a2c92,#4a40c9); }
-.grad-c { background: linear-gradient(150deg,#0f5e7a,#117f9c); }
-.m-body { padding: 24px 26px 28px; }
-.m-body h3 { margin-bottom: 3px; }
-.m-role { color: var(--primary); font-weight:500; margin:0 0 10px; font-size:.98rem; }
-.m-dept { color: var(--muted); font-size:.9rem; margin:0 0 16px; line-height:1.5; }
-.m-blurb { color: var(--ink-2); font-size:.96rem; margin:0; }
-
-.join-card {
-  display:flex; flex-direction:column; align-items:flex-start; gap:10px;
-  padding: 30px 28px; justify-content:center;
-  background: var(--blue-soft); border:1px dashed var(--line-2);
-}
-.join-card:hover { border-color: var(--primary); }
-.join-plus { font-family: var(--display); font-size:2.4rem; line-height:1; color: var(--primary); font-weight:500; }
-.join-card p { color: var(--ink-2); margin:0; }
-.join-card .link-arrow { margin-top:6px; }
-
-@media (max-width: 900px){ .team-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 720px){
-  .pi-card { grid-template-columns: 1fr; }
-  .pi-photo { aspect-ratio: 3/2; max-height: 320px; }
-  .team-grid { grid-template-columns: 1fr; }
-}
-</style>
-<script src="assets/site.js"></script>
-<script src="assets/render.js"></script>
-</body>
-</html>
