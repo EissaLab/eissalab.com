@@ -1,13 +1,13 @@
 ---
 layout: page
 title: People
-description: Meet the members of the Eissa Lab at the University of Colorado Anschutz.
+description: Current members of the Eissa Lab at the University of Colorado Anschutz.
 nav_active: members
 hero:
-  kicker: People
-  title: The people behind the work.
+  kicker: The Team
+  title: Meet the current team.
   title_width: 14ch
-  lead: A growing, interdisciplinary group spanning physiology, psychiatry, computer science, biostatistics, and applied mathematics.
+  lead: We are growing, interdisciplinary group spanning expertise in physiology, neuroscience, psychology, computer science, and applied mathematics.
   lead_width: 54ch
 ---
 
@@ -27,13 +27,7 @@ hero:
       {% for member in team %}
       {% include member-card.html member=member %}
       {% endfor %}
-      <!-- Join card stays last -->
-      <a class="card join-card reveal" href="{{ '/contact/' | relative_url }}#join">
-        <span class="join-plus">+</span>
-        <h3 class="h3">Join the lab</h3>
-        <p>We're looking for curious, motivated students and postdocs.</p>
-        <span class="link-arrow">Open positions <span class="arr">→</span></span>
-      </a>
+    
     </div>
   </div>
 </section>

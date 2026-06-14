@@ -8,7 +8,7 @@ gradient: ""
 affiliations:
   - Department of Physiology & Biophysics
   - Department of Psychiatry
-  - University of Colorado Anschutz
+  - Department of Biomedical Informatics
 links:
   - label: "tahra.eissa@cuanschutz.edu"
     href: "mailto:tahra.eissa@cuanschutz.edu"
@@ -21,3 +21,7 @@ links:
   - label: "GitHub ↗"
     href: "https://github.com/teissa/"
 ---
+
+Tahra Eissa received her bachelor's degree in bioengineering from Cornell University before completing her PhD in neurobiology at the University of Chicago. She completed two postdocs at Columbia University and University of Colorado Boulder prior to starting the Eissa Lab. 
+
+Full CV available below. 
