@@ -1,14 +1,14 @@
-[
+[ {
+    "date": "June 2026",
+    "title": "New members join the team",
+    "body": "Welcome to graduate student, Jenna Cohen, and visiting scholar, Jacopo Epifanio! ",
+    "tag": { "label": "People", "href": "/members/" }
+  },
   {
-    "date": "OCT 2025",
+    "date": "July 2025",
     "title": "The Eissa Lab is open at CU Anschutz",
     "body": "The lab is now open at the University of Colorado Anschutz School of Medicine. Please reach out for inquiries about open positions.",
     "tag": { "label": "Hiring", "href": "/contact/#join" }
-  },
-  {
-    "date": "2025",
-    "title": "New members join the team",
-    "body": "Graduate and undergraduate researchers join the lab to study latent-feature inference, neural population coding, and recurrent network dynamics.",
-    "tag": { "label": "People", "href": "/members/" }
   }
+ 
 ]

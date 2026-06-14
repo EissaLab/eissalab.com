@@ -38,7 +38,7 @@ Five top-level pages (`index/research/members/contact/publications.html`) carry 
 **Includes** (`_includes/`): `head.html`, `header.html`, `footer.html` (shared chrome); `page-hero.html` (front-matter-driven hero); `research-preview.html`, `news.html`, `join-cta.html` (home/CTA sections); `pi-card.html`, `member-card.html` (people, each takes an `include.*` parameter).
 
 **Content lives in data, not HTML:**
-- `_data/publications.json` → rendered **server-side** by Liquid in `publications.html` (`group_by: "year"`, sorted descending). `type` (`journal`/`preprint`/`conf`) drives the colored tag and the JS filter buttons.
+- `_data/publications.json` → rendered **server-side** by Liquid in `publications.html` (`group_by: "year"`, sorted descending). `type` (`publications`/`preprint`) drives the colored tag and the JS filter buttons.
 - `_data/news.json` → home page, via `_includes/news.html`.
 - `_members/*.md` → a Jekyll **collection** (`output: true`, permalink `/people/:name/`). The People page (`members.html`, at `/members/`) lists them; the **PI is distinguished by `badge: Principal Investigator`** (filtered out of the team grid and shown via `pi-card.html`). Each file is front matter only (name, role, initials, gradient, dept, blurb, optional photo/affiliations/links); body markdown, if present, becomes the detail-page bio.
 

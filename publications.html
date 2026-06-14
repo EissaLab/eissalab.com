@@ -7,7 +7,7 @@ hero:
   kicker: Publications
   title: Selected work & preprints.
   title_width: 16ch
-  lead: Peer-reviewed articles, preprints, and conference work from the lab. For a complete, always-current list, see Google Scholar.
+  lead: Peer-reviewed publications and preprints from the lab. For a complete, always-current list, see Google Scholar.
   lead_width: 54ch
   actions:
     - label: "Google Scholar ↗"
@@ -22,9 +22,8 @@ hero:
 <section class="wrap pubs-wrap">
   <div class="pub-filters reveal" role="tablist">
     <button class="filter active" data-filter="all">All</button>
-    <button class="filter" data-filter="journal">Journal</button>
+    <button class="filter" data-filter="publications">Publications</button>
     <button class="filter" data-filter="preprint">Preprint</button>
-    <button class="filter" data-filter="conf">Conference</button>
   </div>
 
   <!-- publications rendered from _data/publications.json -->
@@ -36,7 +35,7 @@ hero:
       <ol class="pub-list">
         {% for pub in group.items %}
         <li class="pub" data-type="{{ pub.type }}">
-          <span class="pub-type t-{{ pub.type }}">{{ pub.type }}</span>
+          <span class="pub-type t-{{ pub.type }}">{{ pub.type | capitalize }}</span>
           <div>
             <p class="pub-title">{{ pub.title }}</p>
             <p class="pub-authors">{{ pub.authors }}</p>

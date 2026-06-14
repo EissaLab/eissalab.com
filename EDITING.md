@@ -56,7 +56,7 @@ and sorted by year automatically — order in the file doesn't matter.
 ```json
 {
   "year": 2025,
-  "type": "journal",
+  "type": "publications",
   "title": "The full paper title.",
   "authors": "<strong>Eissa T.</strong>, Author B. · <em>Journal Name</em> · 2025",
   "links": [
@@ -66,7 +66,7 @@ and sorted by year automatically — order in the file doesn't matter.
 }
 ```
 
-- `type` — `"journal"`, `"preprint"`, or `"conf"` (sets the colored tag + the filter buttons).
+- `type` — `"publications"` or `"preprint"` (sets the colored tag + the filter buttons).
 - `authors` — use `<strong>…</strong>` for **bold** (e.g. the lab member) and `<em>…</em>`
   for *italics* (e.g. the venue). The `·` characters are just separators.
 - `links` — add as many as you like; use `[]` for none.
