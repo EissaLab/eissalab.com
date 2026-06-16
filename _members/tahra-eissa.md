@@ -14,8 +14,10 @@ links:
     href: "mailto:tahra.eissa@cuanschutz.edu"
   - label: "Google Scholar ↗"
     href: "https://scholar.google.com/citations?user=_vu74AcAAAAJ&hl=en"
-  - label: "Twitter ↗"
-    href: "https://twitter.com/EissaTahra"
+  - label: "Bluesky ↗"
+    href: "https://bsky.app/profile/teissa.bsky.social"
+  - label: "X.com ↗"
+    href: "https://x.com/EissaTahra"
   - label: "LinkedIn ↗"
     href: "https://www.linkedin.com/in/tahraeissa/"
   - label: "GitHub ↗"
@@ -24,4 +26,3 @@ links:
 
 Tahra Eissa received her bachelor's degree in bioengineering from Cornell University before completing her PhD in neurobiology at the University of Chicago. She completed two postdocs at Columbia University and University of Colorado Boulder prior to starting the Eissa Lab. 
 
-Full CV available below. 
