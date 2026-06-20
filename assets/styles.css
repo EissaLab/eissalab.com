@@ -321,8 +321,9 @@ p { margin: 0 0 1.1em; }
 }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line-2); }
 
-/* member / PI photos: when a real image is supplied it fills the frame */
-.pi-photo img, .m-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* member / PI photos: when a real image is supplied it fills the frame.
+   `object-position: center top` keeps the head in view when a head-shot is cropped. */
+.pi-photo img, .m-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
 /* page hero spacing on inner pages */
 .page-hero { padding: clamp(60px, 9vw, 110px) 0 clamp(30px,5vw,52px); }
@@ -550,7 +551,8 @@ a.info-val { font-weight:500; color: var(--primary); }
 .team-section { background: var(--surface); border-top:1px solid var(--line); margin-top: clamp(56px,8vw,90px); }
 .team-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
 .member-card { overflow:hidden; display:flex; flex-direction:column; }
-.m-photo { aspect-ratio: 5/4; position:relative; display:grid; place-items:center; }
+/* square frame suits the (square-to-portrait) head shots without cropping faces */
+.m-photo { aspect-ratio: 1/1; position:relative; display:grid; place-items:center; }
 .m-photo img { width:100%; height:100%; object-fit:cover; }
 .grad-a { background: linear-gradient(150deg,#1b347f,#2c52c4); }
 .grad-b { background: linear-gradient(150deg,#3a2c92,#4a40c9); }
@@ -574,7 +576,8 @@ a.info-val { font-weight:500; color: var(--primary); }
 @media (max-width: 900px){ .team-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 720px){
   .pi-card { grid-template-columns: 1fr; }
-  .pi-photo { aspect-ratio: 3/2; max-height: 320px; }
+  /* keep the PI head-shot portrait (not a wide banner that crops the head) */
+  .pi-photo { aspect-ratio: 4/5; max-width: 280px; margin: 0 auto; }
   .team-grid { grid-template-columns: 1fr; }
 }
 
@@ -582,7 +585,7 @@ a.info-val { font-weight:500; color: var(--primary); }
 .member-detail-grid { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
 .member-detail-section { padding-top: 48px; padding-bottom: 80px; }
 .member-detail-photo { border-radius: var(--r-md); aspect-ratio: 4/5; max-width: 280px; }
-.member-detail-photo img { width:100%; height:100%; object-fit:cover; }
+.member-detail-photo img { width:100%; height:100%; object-fit:cover; object-position: center top; }
 .member-bio { color: var(--ink-2); line-height: 1.7; }
 .member-bio p { margin: 0 0 1em; max-width: 66ch; }
 .member-blurb { color: var(--ink-2); max-width: 60ch; }

@@ -94,10 +94,33 @@ are root-relative (`/research/`, `/contact/#join`, `/members/`).
 
 ## 4. Adding real photos
 
-1. Put image files in `assets/photos/` (square-ish crops, ~800px is plenty).
+1. Put image files in `assets/photos/`.
 2. Set that person's `photo:` to the path, e.g. `photo: "assets/photos/tahra-eissa.jpg"`.
 
 The colored initials tile is replaced by the photo automatically.
+
+### Photo specs (head shots)
+
+The **same file** is shown in more than one frame, and the site always fills the
+frame and crops the rest, anchored to the **top‑centre** (so heads are never cut off):
+
+| Where it appears            | Frame shape        |
+| --------------------------- | ------------------ |
+| Team grid card (`/members/`)| **square** (1 : 1) |
+| PI card + every detail page | **portrait** (4 : 5)|
+
+So shoot/crop for a portrait that also survives a square crop:
+
+- **Aspect ratio:** portrait **4 : 5** is ideal (e.g. `1000 × 1250`). A **square** photo
+  also works — it just shows in full on the card and is trimmed to 4 : 5 on the detail page.
+- **Framing:** head‑and‑shoulders, face centred left‑to‑right, with a little headroom
+  above the hair. Keep the face in the **upper two‑thirds** — the bottom is what gets
+  cropped in the square card, so don't put anything important down there.
+- **Size:** about **1000–1200 px** on the long edge is plenty (≈ `1000 × 1250`). Bigger
+  just makes the page slower; please **down‑size very large originals** (a 10–20 MP phone
+  photo is far more than needed) and aim for **under ~400 KB**.
+- **Format:** **JPG** for photos. Use PNG only if you genuinely need transparency.
+- **Filename:** lowercase, hyphenated, matching the person, e.g. `tahra-eissa.jpg`.
 
 ## 5. Previewing locally
 
