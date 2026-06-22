@@ -445,6 +445,13 @@ p { margin: 0 0 1.1em; }
 .theme-body .lead { margin: 18px 0 18px; }
 .theme-body p { color: var(--ink-2); max-width: 56ch; }
 .tag-row { display:flex; flex-wrap:wrap; gap:10px; margin-top: 24px; }
+.theme-cta { margin-top: 24px; }
+
+/* Theme visual carrying a figure/illustration instead of the gradient placeholder.
+   Figures are scientific diagrams of varying aspect ratios — show them whole at
+   their natural proportions (no crop, no letterbox) inside the framed card. */
+.theme-viz.has-img { background: #fff; padding: 0; display: block; aspect-ratio: auto; align-items: initial; }
+.theme-viz.has-img img { width: 100%; height: auto; display: block; }
 
 .method-row { margin-top: 56px; display:flex; flex-direction:column; gap:22px; align-items:center; text-align:center; }
 .methods { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }

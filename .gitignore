@@ -4,3 +4,6 @@ _site/
 .jekyll-metadata
 vendor/
 Gemfile.lock
+
+# Local tooling artifacts
+.playwright-mcp/
