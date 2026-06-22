@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<section class="page-hero">
+  <div class="wrap">
+    <a class="kicker reveal" href="{{ '/research/' | relative_url }}" style="text-decoration:none;">← Research</a>
+    <h1 class="display reveal d1" style="max-width: 20ch; margin-top: 16px;">{{ page.title }}</h1>
+    {% if page.lead %}<p class="lead reveal d2" style="margin-top: 14px; max-width: 60ch;">{{ page.lead }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="wrap member-detail-section">
+  <div class="member-detail-grid">
+    <!-- Theme visual -->
+    <div class="theme-aside reveal">
+      <span class="theme-num">{% if page.order < 10 %}0{% endif %}{{ page.order }}</span>
+      {% if page.image and page.image != "" %}
+      <figure class="theme-viz has-img">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      </figure>
+      {% else %}
+      <figure class="theme-viz viz-{{ page.viz }}" aria-hidden="true">
+        <span class="viz-label">{{ page.viz_label }}</span>
+      </figure>
+      {% endif %}
+    </div>
+
+    <!-- Body -->
+    <div class="member-detail-body">
+      {% if page.kicker %}<span class="kicker">{{ page.kicker }}</span>{% endif %}
+
+      {% if page.pills %}
+      <div class="tag-row" style="margin-top: 16px; margin-bottom: 28px;">
+        {% for pill in page.pills %}<span class="pill">{{ pill }}</span>{% endfor %}
+      </div>
+      {% endif %}
+
+      {% if content and content != "" %}
+      <div class="member-bio">
+        {{ content }}
+      </div>
+      {% elsif page.summary %}
+      <p class="member-blurb">{{ page.summary }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

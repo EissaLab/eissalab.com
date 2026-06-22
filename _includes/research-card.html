@@ -1,0 +1,40 @@
+{%- comment -%}
+  Research theme section block. Expects:
+    include.topic — a research collection document (`_research/*`)
+    include.index — 0-based position; controls the 0N number and the
+                    alternating alt/reverse layout (odd rows flip & shade).
+{%- endcomment -%}
+{% assign topic = include.topic %}
+{% assign i = include.index | default: 0 %}
+{% assign n = i | plus: 1 %}
+{% assign isAlt = i | modulo: 2 %}
+<section class="theme section-pad{% if isAlt == 1 %} alt{% endif %}" id="{{ topic.anchor }}">
+  <div class="wrap theme-inner{% if isAlt == 1 %} reverse{% endif %}">
+    <div class="theme-aside reveal">
+      <span class="theme-num">{% if n < 10 %}0{% endif %}{{ n }}</span>
+      {% if topic.image and topic.image != "" %}
+      <figure class="theme-viz has-img">
+        <img src="{{ topic.image | relative_url }}" alt="{{ topic.title }}">
+      </figure>
+      {% else %}
+      <figure class="theme-viz viz-{{ topic.viz }}" aria-hidden="true">
+        <span class="viz-label">{{ topic.viz_label }}</span>
+      </figure>
+      {% endif %}
+    </div>
+    <div class="theme-body reveal d1">
+      <span class="kicker">{{ topic.kicker }}</span>
+      <h2 class="h2"><a href="{{ topic.url | relative_url }}" style="color:inherit;text-decoration:none;">{{ topic.title }}</a></h2>
+      {% if topic.lead %}<p class="lead">{{ topic.lead }}</p>{% endif %}
+      {% if topic.summary %}<p>{{ topic.summary }}</p>{% endif %}
+      {% if topic.pills %}
+      <div class="tag-row">
+        {% for pill in topic.pills %}<span class="pill">{{ pill }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      <div class="theme-cta">
+        <a class="link-arrow" href="{{ topic.url | relative_url }}">Read more <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>

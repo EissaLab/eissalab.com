@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "jekyll: docker compose up",
+      "type": "shell",
+      "command": "docker compose up",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*Generating\\.\\.\\..*",
+          "endsPattern": ".*Server (running|address).*"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "jekyll: docker compose down",
+      "type": "shell",
+      "command": "docker compose down",
+      "problemMatcher": []
+    },
+    {
+      "label": "jekyll: docker build (one-shot)",
+      "type": "shell",
+      "command": "docker compose run --rm jekyll bundle exec jekyll build --trace",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -20,6 +20,9 @@ collections:
   members:
     output: true
     permalink: /people/:name/
+  research:
+    output: true
+    permalink: /research/:name/
 
 # Defaults
 defaults:
@@ -32,6 +35,11 @@ defaults:
       type: members
     values:
       layout: member
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: research
 
 # Build
 exclude:

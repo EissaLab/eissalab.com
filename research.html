@@ -32,73 +32,9 @@ hero:
   </div>
 </section>
 
-<!-- Theme 01 -->
-<section class="theme section-pad" id="adaptive">
-  <div class="wrap theme-inner">
-    <div class="theme-aside reveal">
-      <span class="theme-num">01</span>
-      <figure class="theme-viz viz-adaptive" aria-hidden="true">
-        <span class="viz-label">EVIDENCE · ENVIRONMENT</span>
-      </figure>
-    </div>
-    <div class="theme-body reveal d1">
-      <span class="kicker">Human Behavior</span>
-      <h2 class="h2">Diverse strategies in Adaptive Decision-Making</h2>
-      <p class="lead">How is information relevant to our environment learned, processed, and applied to our everyday choices?</p>
-      <p>To study this, we build decision-making games with “hidden” features that change how a participant should behave. We then use mathematical modeling to determine what strategies humans use to change their decision-making in different environments.</p>
-      <div class="tag-row">
-        <span class="pill">Latent features</span>
-        <span class="pill">Multi-timescale inference</span>
-        <span class="pill">Population variability</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Theme 02 -->
-<section class="theme section-pad alt" id="memory">
-  <div class="wrap theme-inner reverse">
-    <div class="theme-aside reveal">
-      <span class="theme-num">02</span>
-      <figure class="theme-viz viz-memory" aria-hidden="true">
-        <span class="viz-label">RETAIN · ADAPT</span>
-      </figure>
-    </div>
-    <div class="theme-body reveal d1">
-      <span class="kicker">Neural Mechanisms</span>
-      <h2 class="h2">Flexibility supported across brain regions</h2>
-      <p class="lead"> How does our brain balance adapting to potential new environments while performing well in our current environment, given how complex the world is? </p>
-      <p>We combine human neural activity recordings with neural network modeling to understand how the brain implements flexible decision-making strategies. </p>
-      <div class="tag-row">
-        <span class="pill">Efficient coding</span>
-        <span class="pill">Neural networks</span>
-        <span class="pill">Mechanisms</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Theme 03 -->
-<section class="theme section-pad" id="psychiatry">
-  <div class="wrap theme-inner">
-    <div class="theme-aside reveal">
-      <span class="theme-num">03</span>
-      <figure class="theme-viz viz-clinical" aria-hidden="true">
-        <span class="viz-label">MEASURE · PREDICT</span>
-      </figure>
-    </div>
-    <div class="theme-body reveal d1">
-      <span class="kicker">Theme 03</span>
-      <h2 class="h2">Cognition in Psychiatric Disorders</h2>
-      <p class="lead">Can we understand how and why some patients with psychiatric and neurological disorders struggle with flexibly updating their choices?</p>
-      <p>We develop translational tools that can measure the decision-making strategies patients use, how these strategies differ from the general population, and whether these behavioral metrics can predict treatment outcomes.</p>
-      <div class="tag-row">
-        <span class="pill">Translational tools</span>
-        <span class="pill">Behavioral metrics</span>
-        <span class="pill">Treatment outcomes</span>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- Research themes — one section per `_research/*` document -->
+{% assign topics = site.research | sort: "order" %}
+{% for topic in topics %}
+{% include research-card.html topic=topic index=forloop.index0 %}
+{% endfor %}
 
