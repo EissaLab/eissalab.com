@@ -16,4 +16,4 @@ pills:
 
 We combine human neural activity recordings with neural network modeling to understand how the brain implements flexible decision-making strategies.
 
-By pairing intracranial recordings of neural populations with models that learn the same tasks our participants play, we can ask which candidate mechanisms are biologically plausible and how they are distributed across brain regions.
+By pairing intracranial recordings of neural populations in epilepsy patient who participate in our tasks with models that learn the same tasks, we can ask how the brain computes different cognitive strategies, constrain candidate mechanisms to those that are biologically plausible, and determine how they are distributed across brain regions.
