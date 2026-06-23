@@ -4,11 +4,11 @@ description: >-
   The Eissa Lab studies how we learn and adapt our decision-making strategies
   to different environments, combining crowdsourced behavior, computational
   modeling, and human brain recordings.
-# Served at the standard GitHub Pages project path:
-#   https://eissalab.github.io/eissalab.com/
-# (Local dev stays at root — the Docker serve command overrides baseurl to "".)
-url: "https://eissalab.github.io"
-baseurl: "/eissalab.com"
+# Served at the custom apex domain (see the CNAME file):
+#   https://eissalab.com/
+# baseurl is empty because the apex domain serves the site at root.
+url: "https://eissalab.com"
+baseurl: ""
 
 # Theme / rendering
 markdown: kramdown

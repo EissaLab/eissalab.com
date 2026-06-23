@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing/research website for the **Eissa Lab** (cognition / computation / neuroscience, CU Anschutz), built with **Jekyll** (via the `github-pages` gem) and deployed on **GitHub Pages** at the project path **https://bamr87.github.io/eissalab.com/**. No JS framework, no npm, no tests — the only build is `jekyll build`. Styling is hand-written CSS (custom properties), not a CSS framework.
+Marketing/research website for the **Eissa Lab** (cognition / computation / neuroscience, CU Anschutz), built with **Jekyll** (via the `github-pages` gem) and deployed on **GitHub Pages** (repo `EissaLab/eissalab.com`) at the custom apex domain **https://eissalab.com/**. No JS framework, no npm, no tests — the only build is `jekyll build`. Styling is hand-written CSS (custom properties), not a CSS framework.
 
-**Base path matters.** The site is served under `/eissalab.com/`, so `_config.yml` sets `baseurl: "/eissalab.com"`. Always build internal links/assets with `{{ '/path' | relative_url }}` (or `| relative_url` on data-driven hrefs) — never hardcode root-relative `/path`, which 404s at the subpath. Local dev stays at root because the Docker serve command overrides `--baseurl ""`. (There's no custom domain / `CNAME` currently; to add one back, set the Pages custom domain and revert `baseurl`/`url`.)
+**Custom domain.** The site is served at the apex domain `eissalab.com` (set by the `CNAME` file at the repo root, which Jekyll copies into the build artifact). Because the apex serves at root, `_config.yml` sets `baseurl: ""` and `url: "https://eissalab.com"`. Keep building internal links/assets with `{{ '/path' | relative_url }}` (or `| relative_url` on data-driven hrefs) — with an empty baseurl these resolve to root, and the habit keeps the site portable if a subpath ever returns. The Docker serve command also passes `--baseurl ""`, so local dev matches production.
 
 `EDITING.md` is the non-developer content guide (which `_data` / `_members` files to edit). This file covers the architecture that spans multiple files.
 

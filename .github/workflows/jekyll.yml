@@ -35,8 +35,9 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build with Jekyll
-        # baseurl comes from _config.yml (/eissalab.com) so this matches GitHub's
-        # legacy pages-build-deployment exactly — whichever deploys, paths are correct.
+        # url/baseurl come from _config.yml (apex domain eissalab.com, empty
+        # baseurl); the CNAME file at repo root is copied into the artifact and
+        # tells GitHub Pages to serve the site at the custom domain.
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
