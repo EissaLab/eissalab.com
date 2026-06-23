@@ -23,7 +23,7 @@ links:
   - label: "GitHub ↗"
     href: "https://github.com/teissa/"
   - label: "CV ↗"
-    href: "https://github.com/EissaLab/eissalab.com/blob/b28710a7cff85b93701432ca2c9c8304bdc27b97/assets/cv/Eissa_Tahra_CV_06_2026.pdf"
+    href: "/assets/cv/Eissa_Tahra_CV_06_2026.pdf"
 ---
 
 Tahra Eissa received her bachelor's degree in bioengineering from Cornell University before completing her PhD in neurobiology at the University of Chicago. She completed two postdocs at Columbia University and University of Colorado Boulder prior to starting the Eissa Lab. 
