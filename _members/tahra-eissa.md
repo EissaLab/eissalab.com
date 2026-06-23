@@ -22,9 +22,14 @@ links:
     href: "https://www.linkedin.com/in/tahraeissa/"
   - label: "GitHub ↗"
     href: "https://github.com/teissa/"
-  - label: "CV ↗"
-    href: "/assets/cv/Eissa_Tahra_CV_06_2026.pdf"
 ---
 
-Tahra Eissa received her bachelor's degree in bioengineering from Cornell University before completing her PhD in neurobiology at the University of Chicago. She completed two postdocs at Columbia University and University of Colorado Boulder prior to starting the Eissa Lab. 
+Tahra Eissa received her bachelor's degree in bioengineering from Cornell University before completing her PhD in neurobiology at the University of Chicago. She completed two postdocs at Columbia University and University of Colorado Boulder prior to starting the Eissa Lab.
+
+<div style="margin-top: 32px;">
+  <h2>Curriculum Vitae</h2>
+  <iframe src="/assets/cv/Eissa_Tahra_CV_06_2026.pdf" width="100%" height="900" style="border: 1px solid #d7d7d7;" title="Tahra Eissa CV"></iframe>
+  <p style="margin-top: 12px; font-size: 0.95rem; color: #555;">If your browser does not display the CV, <a href="/assets/cv/Eissa_Tahra_CV_06_2026.pdf" target="_blank" rel="noopener">open it directly in a new tab</a>.</p>
+</div>
+
 
