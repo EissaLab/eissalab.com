@@ -21,11 +21,32 @@ hero:
       <h2 class="h2">Current lab members</h2>
     </div>
     <div class="team-grid" id="team-grid">
-      {% assign team = site.members | where_exp: "m", "m.badge != 'Principal Investigator'" %}
+      {% assign team = site.members | where_exp: "m", "m.badge != 'Principal Investigator' and m.past_member != true" %}
       {% for member in team %}
       {% include member-card.html member=member %}
       {% endfor %}
     
     </div>
+  </div>
+</section>
+
+<!-- Past members -->
+<section class="section-pad past-members-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Alumni</span>
+      <h2 class="h2">Past members</h2>
+    </div>
+
+    {% assign past_members = site.members | where: "past_member", true | sort: "name" %}
+    {% if past_members and past_members.size > 0 %}
+    <ul class="past-members">
+      {% for member in past_members %}
+      <li>{{ member.name }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted-note">No past members listed yet.</p>
+    {% endif %}
   </div>
 </section>

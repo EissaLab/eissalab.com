@@ -507,6 +507,20 @@ p { margin: 0 0 1.1em; }
   .pub-links { margin-top: 2px; }
 }
 
+/* ---- Members (members.html) ---- */
+.past-members-section { background: var(--surface); border-top: 1px solid var(--line); }
+.past-members {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 12px 18px;
+}
+.past-members li {
+  display: inline-flex; align-items: center;
+  padding: .48em .82em; border: 1px solid var(--line-2);
+  border-radius: 999px; background: rgba(17,169,204,.04);
+  color: var(--ink); font-size: 1rem;
+}
+.muted-note { color: var(--muted); margin: 0; }
+
 /* ---- Contact (contact.html) ---- */
 .contact-wrap { padding-top: 12px; }
 .contact-info { max-width: 560px; }
