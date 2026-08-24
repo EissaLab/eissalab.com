@@ -21,9 +21,11 @@ hero:
       <h2 class="h2">Current lab members</h2>
     </div>
     <div class="team-grid" id="team-grid">
-      {% assign team = site.members | where_exp: "m", "m.badge != 'Principal Investigator' and m.past_member != true" %}
+      {% assign team = site.members | where_exp: "m", "m.badge != 'Principal Investigator'" %}
       {% for member in team %}
+      {% unless member.past_member == true %}
       {% include member-card.html member=member %}
+      {% endunless %}
       {% endfor %}
     
     </div>
